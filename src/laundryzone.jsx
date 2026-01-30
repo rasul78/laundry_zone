@@ -1,0 +1,816 @@
+import React, { useState } from 'react';
+import { ChevronDown, Clock, MapPin, Phone, Mail, Loader2, Check, Store, Shirt, User, Package, Timer, Wind, ShoppingBag, Square, Circle, Home } from 'lucide-react';
+
+export default function LaundryZone() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+  const [openFaq, setOpenFaq] = useState(null);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    // ✅ Google Form ID и Entry IDs
+    const FORM_ID = '1FAIpQLSdVFfSTKyzyCtIEm4FVqS-RVhgcjAMXieBzOQkZLaNT5f5MEw';
+    const ENTRY_NAME = 'entry.36369091';
+    const ENTRY_PHONE = 'entry.656409197';
+    const ENTRY_EMAIL = 'entry.2087289980';
+    const ENTRY_MESSAGE = 'entry.898663109';
+
+    const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+
+    // Формируем данные для отправки
+    const params = new URLSearchParams();
+    params.append(ENTRY_NAME, formData.name);
+    params.append(ENTRY_PHONE, formData.phone);
+    params.append(ENTRY_EMAIL, formData.email || '');
+    params.append(ENTRY_MESSAGE, formData.message || '');
+
+    console.log('📤 Отправка в Google Forms:', {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message
+    });
+
+    try {
+      await fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString()
+      });
+
+      console.log('✅ Форма успешно отправлена в Google Forms!');
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', phone: '', email: '', message: '' });
+      
+      setTimeout(() => setSubmitStatus(''), 5000);
+
+    } catch (error) {
+      console.error('❌ Ошибка отправки:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const faqs = [
+    {
+      question: "Как рассчитать вес стирки белья?",
+      answer: "Очень просто!Загружаете вместимости машинки.Принцип такой же,как у домашней стиральки-не трамбуя,чтобы белье свободно крутилось."
+    },
+    {
+      question: "Машинки чистые после других клиентов?",
+      answer: "Да.После каждой стирки машинки проходят автоматическую очистку.При желании можно дополнительно включить режим очистки барабана."
+    },
+    {
+      question: "Нужно ли приносить порошок?",
+      answer: "Не обязательно.У нас на месте продаются качественные порошки и капсулы.Также можно принести свой."
+    },
+    {
+      question: "Необходимо ли ожидать завершения стирки?",
+      answer: " Не обязательно. Вы можете:•	подождать в зоне ожидания	•	выйти по своим делам•	вернуться к окончанию стирки"
+    },
+    {
+      question: "Вы гладите вещи?",
+      answer: "Нет.Laundry Zone — это прачечная самообслуживания.Но после профессиональной сушки многие вещи выходят ровными и мягкими."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50 to-blue-50">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          overflow-x: hidden;
+        }
+
+        .hero-gradient {
+          background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #2E5EFF 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-gradient::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          right: -10%;
+          width: 600px;
+          height: 600px;
+          background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-gradient::after {
+          content: '';
+          position: absolute;
+          bottom: -30%;
+          left: -5%;
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(46,94,255,0.3) 0%, transparent 70%);
+          animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-scaleIn {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .card-hover {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .btn-primary::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+          transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+          left: 100%;
+        }
+
+        .btn-primary:hover {
+          transform: scale(1.05);
+          box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+        }
+
+        .logo-text {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 800;
+          font-size: 2rem;
+          background: linear-gradient(135deg, #2E5EFF 0%, #FF6B35 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .section-title {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 800;
+          font-size: 3rem;
+          line-height: 1.2;
+        }
+
+        .glass-effect {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-shadow {
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+      `}</style>
+{/* Header */}
+<header className="bg-gradient-to-r from-white via-blue-50/30 to-white sticky top-0 z-50 shadow-lg backdrop-blur-sm border-b border-blue-100">
+  <div className="container mx-auto px-6 py-4">
+    <div className="flex items-center justify-between">
+      {/* Logo */}
+      <div className="flex items-center gap-4">
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
+          <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-105 transition-transform duration-300">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="11" width="18" height="14" rx="2.5" stroke="white" strokeWidth="2.5" fill="none"/>
+              <circle cx="13" cy="16" r="1.5" fill="white"/>
+              <circle cx="18" cy="16" r="1.5" fill="white"/>
+              <circle cx="23" cy="16" r="1.5" fill="white"/>
+              <path d="M13 20h10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="text-2xl font-bold tracking-tight">
+            <span className="text-blue-700 drop-shadow-sm">Laundry</span>
+            <span className="text-orange-500 drop-shadow-sm">zone</span>
+          </div>
+          <div className="text-xs text-gray-500 font-semibold tracking-wide">24/7 Прачечная</div>
+        </div>
+      </div>
+
+      {/* Spacer - это создаёт пространство между логотипом и меню */}
+      <div className="flex-1 max-w-[120px]"></div>
+
+      {/* Navigation */}
+      <nav className="hidden lg:flex gap-1 items-center bg-white/60 backdrop-blur-md rounded-full px-2 py-2 shadow-md border border-gray-100">
+        <a href="#main" className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105">
+          Главная
+          <span className="absolute inset-0 rounded-full bg-white opacity-0 hover:opacity-20 transition-opacity"></span>
+        </a>
+        <a href="#about" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          О нас
+        </a>
+        <a href="#services" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          Услуги
+        </a>
+        <a href="#prices" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          Цены
+        </a>
+        <a href="#branches" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          Филиалы
+        </a>
+        <a href="#equipment" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          Оборудование
+        </a>
+        <a href="#faq" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+          FAQ
+        </a>
+      </nav>
+
+      {/* Contact Button */}
+      <button className="hidden lg:block relative group ml-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
+        <div className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transform group-hover:scale-105 transition-all duration-300 flex items-center gap-2">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Связаться
+        </div>
+      </button>
+
+      {/* Mobile Menu Button */}
+      <button className="lg:hidden text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+      {/* Hero Section */}
+      <section id="home" className="hero-gradient py-24 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div className="text-white animate-slideUp">
+              <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <Clock className="inline w-4 h-4 mr-2" />
+                Открыто 24/7
+              </div>
+              <h1 className="section-title text-white text-shadow mb-6">
+                Прачечная<br />
+                самообслуживания
+              </h1>
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                Монгольская компания, оказывающая услуги прачечной самообслуживания мирового уровня по всей стране
+              </p>
+              <div className="flex gap-4">
+                <a href="#pricing" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold shadow-2xl hover:bg-gray-50 transition-all hover:scale-105">
+                  Информация о ценах
+                </a>
+                <a href="/locations" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white/30 transition-all">
+                  Где мы находимся
+                </a>
+              </div>
+            </div>
+            <div className="animate-scaleIn delay-200">
+              <div className="glass-effect rounded-3xl p-8 shadow-2xl">
+                <div className="w-full aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-xl flex items-center justify-center">
+                  <span className="text-white text-6xl font-bold">Laundryzone</span>
+                </div>
+                <div className="mt-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-2xl">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/20 p-3 rounded-full">
+                      <Clock className="w-8 h-8" />
+                    </div>
+                    <div>
+                      <div className="text-sm opacity-90">Работаем</div>
+                      <div className="text-2xl font-bold">Каждый день 08:00 - 24:00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center animate-slideUp">
+            <div className="inline-block bg-gradient-to-r from-blue-100 to-orange-100 px-6 py-2 rounded-full text-blue-800 font-bold mb-6">
+              с 2025 года
+            </div>
+            <h2 className="section-title text-gray-900 mb-8">
+              Домашняя машинка не справляется с объемом?
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed mb-12">
+              Laundry Zone в Алматы - профессиональные машинки 20-30кг. Стирка и сушка всего за 1 час
+            </p>
+<div className="grid md:grid-cols-3 gap-8">
+              {[
+                { number: '4', label: 'филиала в Алматы', delay: 'delay-100' },
+                { number: '', label: '', delay: 'delay-200', isPrice: true },
+                { number: '10K+', label: 'Довольных клиентов', delay: 'delay-300' }
+              ].map((stat, idx) => (
+                <div key={idx} className={`card-hover bg-gradient-to-br from-blue-50 to-orange-50 p-8 rounded-2xl shadow-lg animate-slideUp ${stat.delay} flex flex-col items-center justify-center`}>
+                  {stat.isPrice ? (
+                    <div className="text-center">
+                      <div className="text-3xl font-black bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                        Стирка
+                      </div>
+                      <div className="text-2xl font-bold text-gray-700 mb-4">
+                        от 3000₸
+                      </div>
+                      <div className="text-3xl font-black bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                        Сушка
+                      </div>
+                      <div className="text-2xl font-bold text-gray-700">
+                        от 3000₸
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="text-5xl font-black bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-3">
+                        {stat.number}
+                      </div>
+                      <div className="text-gray-700 font-semibold">{stat.label}</div>
+                    </>
+                  )}
+                </div>
+              ))}
+            
+          
+            </div>
+          </div>
+        </div>
+      </section>
+
+   
+  {/* Services Section */}
+   <section id="services" className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="container mx-auto px-6">
+      <div className="text-center mb-16 animate-slideUp">
+        <h2 className="section-title text-gray-900 mb-4">Наши услуги</h2>
+        <p className="text-xl text-gray-600">Обязательно посетите филиалы LAUNDRYZONE</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {[
+          {
+            title: 'Как это работает?',
+            icon: Store,
+            description: 'Постирайте, высушите и очистите!',
+            features: [
+              { text: 'Пришли', icon: User },
+              { text: 'Загрузили вещи', icon: Package },
+              { text: 'Постирали - 30 минут', icon: Timer },
+              { text: 'Высушили — 30–40 минут', icon: Wind },
+              { text: 'Забрали чистые вещи', icon: ShoppingBag }
+            ],
+            delay: 'delay-100'
+          },
+          {
+            title: 'Что можно стирать?',
+            icon: Shirt,
+            description: 'Профессиональная стирка любых вещей',
+            features: [
+              { text: 'повседневная одежда', icon: Shirt },
+              { text: 'одеяла', icon: Square },
+              { text: 'пледы', icon: Square },
+              { text: 'подушки', icon: Circle },
+              { text: 'куртки', icon: Shirt },
+              { text: 'кроссовки', icon: Package },
+              { text: 'шторы', icon: Home },
+              { text: 'тюли', icon: Home },
+              { text: 'большие объёмы до 30 кг', icon: Package }
+            ],
+            delay: 'delay-200'
+          },
+        ].map((service, idx) => (
+          <div key={idx} className={`card-hover bg-white rounded-3xl p-8 shadow-xl animate-slideUp ${service.delay}`}>
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-orange-100 rounded-xl flex items-center justify-center mb-6">
+              <service.icon className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+            <p className="text-gray-600 mb-6">{service.description}</p>
+            <ul className="space-y-3">
+              {service.features.map((feature, fidx) => (
+                <li key={fidx} className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <feature.icon className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-gray-700">{feature.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+      {/* Pricing Section with Price List Images */}
+      <section id="pricing" className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16 animate-slideUp">
+            <h2 className="section-title text-gray-900 mb-4">Информация о стоимости услуги</h2>
+            <p className="text-xl text-gray-600">Все виды услуг в прачечной по сниженным ценам</p>
+          </div>
+          
+          <div className="max-w-7xl mx-auto">
+
+            {/* Price List Images */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Прайс-лист 1 - Русский */}
+              <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-2xl animate-slideUp delay-100">
+                <img 
+                  src="/images/price-list_rus.png" 
+                  alt="Прайс-лист на русском языке"
+                  className="w-full h-auto object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Placeholder если изображение не загружено */}
+                <div className="hidden w-full aspect-[3/4] bg-gradient-to-br from-purple-100 to-blue-100 flex-col items-center justify-center p-8">
+                  <div className="text-6xl mb-4">📋</div>
+                  <p className="text-xl font-bold text-gray-800 mb-2">Прайс-лист</p>
+                  <p className="text-gray-600 text-center">Русский язык</p>
+                  <p className="text-sm text-gray-500 mt-4 text-center">
+                    Загрузите IMG_8382.PNG в /public/images/
+                  </p>
+                </div>
+              </div>
+
+              {/* Прайс-лист 2 - Казахский */}
+              <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-2xl animate-slideUp delay-200">
+                <img 
+                  src="/images/price-list_kaz.png" 
+                  alt="Прайс-лист на казахском языке"
+                  className="w-full h-auto object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Placeholder если изображение не загружено */}
+                <div className="hidden w-full aspect-[3/4] bg-gradient-to-br from-blue-100 to-orange-100 flex-col items-center justify-center p-8">
+                  <div className="text-6xl mb-4">📋</div>
+                  <p className="text-xl font-bold text-gray-800 mb-2">Бағалар тізімі</p>
+                  <p className="text-gray-600 text-center">Казахский язык</p>
+                  <p className="text-sm text-gray-500 mt-4 text-center">
+                    Загрузите IMG_8383.PNG в /public/images/
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16 animate-slideUp">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <span className="text-4xl">❓</span>
+            </div>
+            <h2 className="section-title text-gray-900 mb-4">Вопросы и ответы</h2>
+            <p className="text-xl text-gray-600">Ответы на ваши вопросы</p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className={`card-hover bg-white rounded-2xl shadow-lg overflow-hidden animate-slideUp delay-${idx + 1}00`}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                >
+                  <span className="text-lg font-bold text-gray-900">{faq.question}</span>
+                  <ChevronDown 
+                    className={`w-6 h-6 text-orange-600 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-8 pb-6 text-gray-700 leading-relaxed animate-slideUp">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        {/* Telegram */}
+        <a
+          href="https://t.me/laundryzonekz"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-[#229ED9] rounded-full flex items-center justify-center shadow-lg 
+                     hover:scale-110 transition-transform duration-300 animate-bounce"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1024px-Telegram_2019_Logo.svg.png"
+            alt="Telegram"
+            className="w-7 h-7"
+          />
+        </a>
+
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/laundryzone.kz?igsh=MTZwdXpqZ3k3emk4bw%3D%3D&utm_source=qr"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-gradient-to-tr from-[#FFB000] via-[#FF008E] to-[#8E24AA] rounded-full flex items-center justify-center shadow-lg 
+                     hover:scale-110 transition-transform duration-300 animate-bounce"
+          style={{ animationDelay: '200ms' }}
+        >
+          <svg 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="white" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="w-8 h-8"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+
+{/* Contact Section */}
+<section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white">
+  <div className="container mx-auto px-6">
+    <div className="max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* Левая сторона - Контактная информация */}
+        <div className="animate-slideUp">
+          <h2 className="section-title mb-6 text-white text-shadow">Связаться с нами</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Свяжитесь с нами для получения дополнительной информации или оставьте заявку
+          </p>
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-6 h-6 text-orange-400" />
+              </div>
+              <div>
+                <div className="font-bold text-lg mb-1">Адрес</div>
+                <div className="text-blue-100">Алматы, Казахстан</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-orange-400" />
+              </div>
+              <div>
+                <div className="font-bold text-lg mb-1">Телефон</div>
+                <a 
+                  href="tel:+77079092528" 
+                  className="text-blue-100 hover:text-white transition-colors"
+                >
+                  +7 (707) 909 25 28
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-orange-400" />
+              </div>
+              <div>
+                <div className="font-bold text-lg mb-1">Email</div>
+                <a 
+                  href="mailto:info@laundryzone.kz" 
+                  className="text-blue-100 hover:text-white transition-colors"
+                >
+                  info@laundryzone.kz
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Правая сторона - Форма */}
+        <div className="glass-effect rounded-3xl p-8 shadow-2xl animate-scaleIn delay-200">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Имя <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all text-gray-900"
+                placeholder="Ваше имя"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Телефон <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all text-gray-900"
+                placeholder="+7 (XXX) XXX-XX-XX"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">Email</label>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all text-gray-900"
+                placeholder="your@email.com"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">Сообщение</label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                rows={4}
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all resize-none text-gray-900"
+                placeholder="Ваше сообщение..."
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary w-full text-white px-8 py-4 rounded-xl font-bold shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  Отправка...
+                </>
+              ) : (
+                <>
+                  <Mail className="w-5 h-5" />
+                  Отправить сообщение
+                </>
+              )}
+            </button>
+
+            {submitStatus === 'success' && (
+              <div className="bg-green-100 border-2 border-green-500 text-green-800 px-4 py-3 rounded-xl flex items-center gap-3 animate-slideUp">
+                <Check className="w-5 h-5 flex-shrink-0" />
+                <span className="font-semibold">Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.</span>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-100 border-2 border-red-500 text-red-800 px-4 py-3 rounded-xl flex items-center gap-3 animate-slideUp">
+                <Mail className="w-5 h-5 flex-shrink-0" />
+                <span className="font-semibold">Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь по телефону.</span>
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center">
+                  <div className="w-6 h-5 border-3 border-white rounded-md"></div>
+                </div>
+                <div className="text-2xl font-bold">Laundryzone</div>
+              </div>
+              <p className="text-gray-400">
+                Первая в Казахстане прачечная самообслуживания
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Навигация</h4>
+              <ul className="space-y-2">
+                <li><a href="/" className="text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
+                <li><a href="#about" className="text-gray-400 hover:text-orange-400 transition-colors">О нас</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-orange-400 transition-colors">Услуги</a></li>
+                <li><a href="#pricing" className="text-gray-400 hover:text-orange-400 transition-colors">Цены</a></li>
+                <li><a href="/locations" className="text-gray-400 hover:text-orange-400 transition-colors">Филиалы</a></li>
+                <li><a href="/equipment" className="text-gray-400 hover:text-orange-400 transition-colors">Оборудование</a></li>
+                <li><a href="#faq" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Контакты</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>📍 Алматы, Казахстан</li>
+                <li>📞 +7 (707) 909 25 28</li>
+                <li>✉️ laundryzonekazakhstan@gmail.com</li>
+                <li>⏰ 08:00-00:00 Открыто</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <p>&copy; 2019-2026 Laundryzone. Все права защищены.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
