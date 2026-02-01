@@ -242,8 +242,7 @@ export default function LaundryZone() {
         .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
-
-      {/* Header */}
+{/* Header */}
       <header className="bg-gradient-to-r from-white via-blue-50/30 to-white fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-sm border-b border-blue-100">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
@@ -313,7 +312,7 @@ export default function LaundryZone() {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all z-50 relative"
+              className="lg:hidden text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all z-[60] relative"
             >
               {mobileMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -326,14 +325,25 @@ export default function LaundryZone() {
               )}
             </button>
           </div>
+        </div>
+      </header>
 
-          {/* Mobile Menu */}
-          <div className={`lg:hidden fixed inset-0 top-[72px] bg-white z-40 transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-            <nav className="flex flex-col p-6 space-y-2 overflow-y-auto h-full">
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          
+          {/* Menu Content */}
+          <div className="lg:hidden fixed inset-x-0 top-[68px] bottom-0 bg-white z-[45] shadow-2xl animate-slideIn">
+            <nav className="flex flex-col p-4 space-y-2 h-full overflow-y-auto">
               <a 
                 href="#home" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-6 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold text-center"
+                className="px-6 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold text-center shadow-lg"
               >
                 Главная
               </a>
@@ -388,8 +398,8 @@ export default function LaundryZone() {
               </a>
             </nav>
           </div>
-        </div>
-      </header>
+        </>
+      )}
 
       {/* Spacer для компенсации fixed header */}
       <div className="h-[72px]"></div>
@@ -408,7 +418,7 @@ export default function LaundryZone() {
                 самообслуживания
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
-                Монгольская компания, оказывающая услуги прачечной самообслуживания мирового уровня по всей стране
+                Компания, оказывающая услуги прачечной самообслуживания мирового уровня по всей стране
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a href="#pricing" className="bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold shadow-2xl hover:bg-gray-50 transition-all hover:scale-105 text-center text-sm sm:text-base">

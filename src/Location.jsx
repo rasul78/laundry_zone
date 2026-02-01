@@ -4,6 +4,7 @@ import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
 export default function Locations() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50 to-blue-50">
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
         
@@ -92,6 +93,8 @@ export default function Locations() {
         }
       `}</style>
 
+
+
       {/* Header */}
       <header className="glass-effect sticky top-0 z-50 shadow-lg">
         <div className="container mx-auto px-6 py-4">
@@ -179,7 +182,7 @@ export default function Locations() {
       <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-xl animate-slideUp">
         <div className="relative h-64">
           <img 
-            src="/images/philial1.jpg" 
+            src="/images/philial4.jpg" 
             alt="Филиал №1 - Центр Алматы" 
             className="w-full h-full object-cover"
           />
@@ -227,7 +230,7 @@ export default function Locations() {
       <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-100">
         <div className="relative h-64">
           <img 
-            src="/images/philial2.jpg" 
+            src="/images/philial1.jpg" 
             alt="Филиал №2" 
             className="w-full h-full object-cover"
           />
@@ -275,7 +278,7 @@ export default function Locations() {
       <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-200">
         <div className="relative h-64">
           <img 
-            src="/images/philial3.jpg" 
+            src="/images/philial2.jpg" 
             alt="Филиал №3" 
             className="w-full h-full object-cover"
           />
@@ -323,7 +326,7 @@ export default function Locations() {
       <div className="card-hover bg-white rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-300">
         <div className="relative h-64">
           <img 
-            src="/images/philial4.jpg" 
+            src="/images/philial2.jpg" 
             alt="Филиал №4" 
             className="w-full h-full object-cover"
           />
@@ -435,9 +438,7 @@ export default function Locations() {
                     {[
                       'Современное оборудование',
                       'Удобная парковка',
-                      'Зона ожидания с Wi-Fi',
                       'Система безопасности 24/7',
-                      'Автоматическая оплата',
                       'Консультации персонала',
                       'Детергенты в продаже',
                       'Чистота и комфорт'

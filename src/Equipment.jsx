@@ -249,7 +249,6 @@ export default function Equipment() {
                       <p className="font-semibold text-gray-900 mb-2">Сушка 25 кг:</p>
                       <ul className="space-y-1 text-gray-700">
                         <li>• Вместимость: 25 кг</li>
-                        <li>• Режимы: деликатный/стандартный</li>
                         <li>• Время: 20-30 минут</li>
                         <li>• Температура: регулируемая</li>
                       </ul>
@@ -272,7 +271,6 @@ export default function Equipment() {
                   <div className="space-y-2 text-gray-700">
                     <p>• <strong>Машина для обуви:</strong> Бережная стирка и сушка обуви (1-6 пар)</p>
                     <p>• <strong>Система дезинфекции:</strong> УФ-обработка для дополнительной чистоты</p>
-                    <p>• <strong>Весы:</strong> Точное взвешивание белья перед стиркой</p>
                     <p>• <strong>Автоматы:</strong> Продажа моющих средств и кондиционеров</p>
                   </div>
                 </div>
