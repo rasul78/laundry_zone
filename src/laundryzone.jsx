@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Clock, MapPin, Phone, Mail, Loader2, Check, Store, User, Timer, Wind, ShoppingBag } from 'lucide-react';
+import { ChevronDown, Clock, Phone, Mail, Loader2, Check, Store, User, Timer, Wind, ShoppingBag } from 'lucide-react';
 // Импортируем иконки из react-icons
 import { GiClothes } from 'react-icons/gi';
 import { FaBed, FaShoePrints, FaCouch } from 'react-icons/fa';

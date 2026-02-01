@@ -84,6 +84,12 @@ export default function Equipment() {
           }
         }
 
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
         .animate-slideUp {
           animation: slideUp 0.8s ease-out forwards;
         }
@@ -94,6 +100,18 @@ export default function Equipment() {
 
         .rotate-slow {
           animation: rotate 20s linear infinite;
+        }
+
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+          animation-delay: 4s;
         }
 
         .equipment-placeholder {
@@ -224,7 +242,7 @@ export default function Equipment() {
             </div>
             <h1 className="section-title text-white mb-4 sm:mb-6 px-4">Оборудование</h1>
             <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8 px-4">
-              Самое современное оборудование для обеспечения профессиональных результатов коммерции в ванной комнате
+              Самое современное оборудование для профессиональной стирки
             </p>
           </div>
         </div>
@@ -236,17 +254,16 @@ export default function Equipment() {
           <div className="max-w-4xl mx-auto text-center animate-slideUp">
             <h2 className="section-title text-gray-900 mb-6 sm:mb-8 px-4">Стиральная машина</h2>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 sm:mb-12 px-4">
-              Наш специализированный сервис, стиральная машина и передовые технологии для уборки
+              Наш специализированный сервис и передовые технологии для чистоты
             </p>
           </div>
         </div>
       </section>
 
-  {/* Equipment Grid */}
+      {/* Equipment Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
-            {/* Equipment cards with real images */}
             {[
               { 
                 title: 'Стиральная машина 1', 
@@ -273,7 +290,7 @@ export default function Equipment() {
                 alt: 'Сушильная машина 25 кг'
               }
             ].map((item, idx) => (
-              <div key={idx} className={`card-hover bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-${idx}00`}>
+              <div key={idx} className="card-hover bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl animate-slideUp">
                 <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                   <img 
                     src={item.image}
@@ -284,7 +301,6 @@ export default function Equipment() {
                       e.target.nextElementSibling.style.display = 'flex';
                     }}
                   />
-                  {/* Fallback placeholder */}
                   <div className="hidden absolute inset-0 flex items-center justify-center p-6 sm:p-8">
                     <div className="text-center">
                       <Settings className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 text-gray-400" />
@@ -306,101 +322,79 @@ export default function Equipment() {
         </div>
       </section>
 
-   {/* Features Section */}
-<section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-orange-50 relative overflow-hidden">
-  {/* Decorative background elements */}
-  <div className="absolute top-0 left-0 w-full h-full opacity-30">
-    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-    <div className="absolute top-40 right-10 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-    <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
-  </div>
-
-  <div className="container mx-auto px-4 sm:px-6 relative z-10">
-    <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-12 sm:mb-16 animate-slideUp">
-        <div className="inline-block mb-4">
+      {/* Features Section */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-orange-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
-        <h2 className="section-title text-gray-900 mb-3 sm:mb-4 px-4">
-          Преимущества нашего оборудования
-        </h2>
-        <p className="text-lg sm:text-xl text-gray-600 px-4">
-          Технологии мирового класса для вашего комфорта
-        </p>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-        {[
-          {
-            icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12" />,
-            title: 'Энергоэффективность',
-            description: 'Современные машины потребляют минимум электроэнергии и воды, экономя ваши средства',
-            color: 'from-yellow-400 to-orange-500',
-            bgColor: 'from-yellow-50 to-orange-50',
-            shadowColor: 'shadow-yellow-200/50'
-          },
-          {
-            icon: <Shield className="w-10 h-10 sm:w-12 sm:h-12" />,
-            title: 'Безопасность',
-            description: 'Все оборудование сертифицировано и проходит регулярное техническое обслуживание',
-            color: 'from-blue-500 to-indigo-600',
-            bgColor: 'from-blue-50 to-indigo-50',
-            shadowColor: 'shadow-blue-200/50'
-          },
-          {
-            icon: <ThermometerSun className="w-10 h-10 sm:w-12 sm:h-12" />,
-            title: 'Разные режимы',
-            description: 'Множество программ стирки и сушки для разных типов тканей и загрязнений',
-            color: 'from-red-500 to-pink-600',
-            bgColor: 'from-red-50 to-pink-50',
-            shadowColor: 'shadow-pink-200/50'
-          }
-        ].map((feature, idx) => (
-          <div 
-            key={idx} 
-            className={`group card-hover bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl ${feature.shadowColor} transition-all duration-300 animate-slideUp delay-${idx + 1}00 border border-gray-100 hover:border-transparent relative overflow-hidden`}
-          >
-            {/* Subtle background gradient on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
-            
-            <div className="relative z-10">
-              <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
-                {feature.icon}
-              </div>
-              
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${feature.color} transition-all duration-300">
-                {feature.title}
-              </h3>
-              
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                {feature.description}
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 animate-slideUp">
+              <h2 className="section-title text-gray-900 mb-3 sm:mb-4 px-4">
+                Преимущества нашего оборудования
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">
+                Технологии мирового класса для вашего комфорта
               </p>
             </div>
 
-            {/* Decorative corner element */}
-            <div className={`absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br ${feature.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {[
+                {
+                  icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12" />,
+                  title: 'Энергоэффективность',
+                  description: 'Современные машины потребляют минимум электроэнергии и воды, экономя ваши средства',
+                  color: 'from-yellow-400 to-orange-500',
+                  bgColor: 'from-yellow-50 to-orange-50',
+                  shadowColor: 'shadow-yellow-200/50'
+                },
+                {
+                  icon: <Shield className="w-10 h-10 sm:w-12 sm:h-12" />,
+                  title: 'Безопасность',
+                  description: 'Все оборудование сертифицировано и проходит регулярное техническое обслуживание',
+                  color: 'from-blue-500 to-indigo-600',
+                  bgColor: 'from-blue-50 to-indigo-50',
+                  shadowColor: 'shadow-blue-200/50'
+                },
+                {
+                  icon: <ThermometerSun className="w-10 h-10 sm:w-12 sm:h-12" />,
+                  title: 'Разные режимы',
+                  description: 'Множество программ стирки и сушки для разных типов тканей и загрязнений',
+                  color: 'from-red-500 to-pink-600',
+                  bgColor: 'from-red-50 to-pink-50',
+                  shadowColor: 'shadow-pink-200/50'
+                }
+              ].map((feature, idx) => (
+                <div 
+                  key={idx} 
+                  className={`group card-hover bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl ${feature.shadowColor} transition-all duration-300 animate-slideUp border border-gray-100 hover:border-transparent relative overflow-hidden`}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
+                  
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                      {feature.icon}
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 transition-all duration-300">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
 
-<style jsx>{`
-  @keyframes blob {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-  }
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-`}</style>
+                  <div className={`absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br ${feature.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Technical Specs */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -410,7 +404,6 @@ export default function Equipment() {
               <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-6 sm:mb-8 text-center">Технические характеристики</h2>
               
               <div className="space-y-4 sm:space-y-6">
-                {/* Washing Machines */}
                 <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-3 sm:mb-4">Стиральные машины</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
@@ -435,7 +428,6 @@ export default function Equipment() {
                   </div>
                 </div>
 
-                {/* Dryers */}
                 <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-orange-900 mb-3 sm:mb-4">Сушильные машины</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
@@ -459,7 +451,6 @@ export default function Equipment() {
                   </div>
                 </div>
 
-                {/* Special Equipment */}
                 <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-green-900 mb-3 sm:mb-4">Специализированное оборудование</h3>
                   <div className="space-y-2 text-gray-700 text-xs sm:text-sm">
@@ -504,7 +495,7 @@ export default function Equipment() {
         </div>
       </section>
 
-    {/* Footer */}
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
