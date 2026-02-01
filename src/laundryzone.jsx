@@ -258,16 +258,16 @@ export default function LaundryZone() {
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
 
-      {/* Header - УЛУЧШЕННЫЙ */}
+      {/* Header - ИДЕАЛЬНЫЙ РАЗМЕР ЛОГОТИПА */}
       <header className="bg-gradient-to-r from-white via-blue-50/30 to-white fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-sm border-b border-blue-100">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between gap-2 sm:gap-3 lg:gap-4">
-            {/* Logo - Полностью адаптивный, большой размер */}
+            {/* Logo - ОПТИМАЛЬНЫЙ РАЗМЕР */}
             <a href="#home" className="flex items-center flex-shrink-0">
              <img
   src="/images/logo.png"
   alt="Laundryzone Logo"
-  className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain"
+  className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain"
 />
             </a>
 
@@ -339,7 +339,7 @@ export default function LaundryZone() {
           />
           
           {/* Menu Content */}
-          <div className="lg:hidden fixed inset-x-0 top-[56px] sm:top-[64px] bottom-0 bg-white z-[45] shadow-2xl animate-slideIn">
+          <div className="lg:hidden fixed inset-x-0 top-[72px] sm:top-[88px] bottom-0 bg-white z-[45] shadow-2xl animate-slideIn">
             <nav className="flex flex-col p-4 space-y-2 h-full overflow-y-auto">
               <a 
                 href="#home" 
@@ -403,10 +403,10 @@ export default function LaundryZone() {
       )}
 
       {/* Spacer для компенсации fixed header */}
-      <div className="h-[56px] sm:h-[64px]"></div>
+      <div className="h-[72px] sm:h-[88px]"></div>
 
       {/* Hero Section - С ЛОГОТИПОМ ВМЕСТО СИНЕГО БЛОКА */}
-      <section id="home" className="hero-gradient py-12 sm:py-16 md:py-24 relative min-h-[calc(100vh-56px)] sm:min-h-[calc(100vh-64px)]">
+      <section id="home" className="hero-gradient py-12 sm:py-16 md:py-24 relative min-h-[calc(100vh-72px)] sm:min-h-[calc(100vh-88px)]">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 min-h-[calc(100vh-120px)] md:min-h-0">
             <div className="text-white animate-slideUp">
@@ -836,7 +836,7 @@ export default function LaundryZone() {
         </div>
       </section>
 
-   {/* Footer */}
+   {/* Footer - ИДЕАЛЬНЫЙ РАЗМЕР ЛОГОТИПА */}
       <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
@@ -845,7 +845,7 @@ export default function LaundryZone() {
                 <img 
                   src="/images/logo.png" 
                   alt="Laundryzone Logo" 
-                  className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-60 w-auto object-contain"
+                  className="h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 2xl:h-80 w-auto object-contain"
                 />
               </div>
               <p className="text-sm sm:text-base text-gray-400">
