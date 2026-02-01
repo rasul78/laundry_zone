@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Clock, Phone, Navigation, Menu, X } from 'lucide-react';
+import { MapPin, Clock, Phone, Menu, X } from 'lucide-react';
 
 export default function Locations() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
