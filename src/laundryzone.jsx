@@ -162,6 +162,17 @@ export default function LaundryZone() {
           }
         }
 
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
         .animate-slideUp {
           animation: slideUp 0.8s ease-out forwards;
         }
@@ -172,6 +183,10 @@ export default function LaundryZone() {
 
         .animate-scaleIn {
           animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-slideIn {
+          animation: slideIn 0.3s ease-out forwards;
         }
 
         .card-hover {
@@ -242,67 +257,53 @@ export default function LaundryZone() {
         .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
-{/* Header */}
-      <header className="bg-gradient-to-r from-white via-blue-50/30 to-white fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-sm border-b border-blue-100">
-        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl sm:rounded-2xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
-                <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-105 transition-transform duration-300">
-                  <svg className="w-6 h-6 sm:w-9 sm:h-9" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="9" y="11" width="18" height="14" rx="2.5" stroke="white" strokeWidth="2.5" fill="none"/>
-                    <circle cx="13" cy="16" r="1.5" fill="white"/>
-                    <circle cx="18" cy="16" r="1.5" fill="white"/>
-                    <circle cx="23" cy="16" r="1.5" fill="white"/>
-                    <path d="M13 20h10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-lg sm:text-2xl font-bold tracking-tight">
-                  <span className="text-blue-700 drop-shadow-sm">Laundry</span>
-                  <span className="text-orange-500 drop-shadow-sm">zone</span>
-                </div>
-                <div className="text-[10px] sm:text-xs text-gray-500 font-semibold tracking-wide">Прачечная</div>
-              </div>
-            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex gap-1 items-center bg-white/60 backdrop-blur-md rounded-full px-2 py-2 shadow-md border border-gray-100">
-              <a href="#home" className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105">
+      {/* Header - УЛУЧШЕННЫЙ */}
+      <header className="bg-gradient-to-r from-white via-blue-50/30 to-white fixed top-0 left-0 right-0 z-50 shadow-lg backdrop-blur-sm border-b border-blue-100">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 lg:gap-4">
+            {/* Logo - Полностью адаптивный */}
+            <a href="#home" className="flex items-center flex-shrink-0">
+              <img 
+                src="/images/logo.jpg" 
+                alt="Laundryzone Logo" 
+                className="h-10 sm:h-12 md:h-13 lg:h-14 xl:h-16 w-auto object-contain"
+              />
+            </a>
+
+            {/* Desktop Navigation - Чистое меню без видимых границ */}
+            <nav className="hidden lg:flex gap-0.5 xl:gap-1 items-center rounded-full px-1.5 xl:px-2 py-1.5 xl:py-2 flex-shrink min-w-0">
+              <a href="#home" className="relative px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs xl:text-sm 2xl:text-base font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 whitespace-nowrap">
                 Главная
-                <span className="absolute inset-0 rounded-full bg-white opacity-0 hover:opacity-20 transition-opacity"></span>
               </a>
-              <a href="#about" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="#about" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 О нас
               </a>
-              <a href="#services" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="#services" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 Услуги
               </a>
-              <a href="#pricing" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="#pricing" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 Цены
               </a>
-              <a href="/locations" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="/locations" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 Филиалы
               </a>
-              <a href="/equipment" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="/equipment" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 Оборудование
               </a>
-              <a href="#faq" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="#faq" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 FAQ
               </a>
-              <a href="#contact" className="px-6 py-2.5 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300">
+              <a href="#contact" className="px-2.5 xl:px-4 2xl:px-5 py-2 rounded-full text-gray-700 text-xs xl:text-sm 2xl:text-base font-medium hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 whitespace-nowrap">
                 Контакты
               </a>
             </nav>
 
-            {/* Desktop Contact Button */}
-            <a href="#contact" className="hidden lg:block relative group ml-6">
+            {/* Desktop Contact Button - Компактная версия */}
+            <a href="#contact" className="hidden lg:block relative group flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
-              <div className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transform group-hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 xl:px-5 2xl:px-6 py-2 xl:py-2.5 rounded-full text-xs xl:text-sm 2xl:text-base font-bold shadow-lg transform group-hover:scale-105 transition-all duration-300 flex items-center gap-1.5 xl:gap-2 whitespace-nowrap">
+                <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 Связаться
@@ -312,7 +313,7 @@ export default function LaundryZone() {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all z-[60] relative"
+              className="lg:hidden text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-all z-[60] relative flex-shrink-0"
             >
               {mobileMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -338,7 +339,7 @@ export default function LaundryZone() {
           />
           
           {/* Menu Content */}
-          <div className="lg:hidden fixed inset-x-0 top-[68px] bottom-0 bg-white z-[45] shadow-2xl animate-slideIn">
+          <div className="lg:hidden fixed inset-x-0 top-[56px] sm:top-[64px] bottom-0 bg-white z-[45] shadow-2xl animate-slideIn">
             <nav className="flex flex-col p-4 space-y-2 h-full overflow-y-auto">
               <a 
                 href="#home" 
@@ -402,10 +403,10 @@ export default function LaundryZone() {
       )}
 
       {/* Spacer для компенсации fixed header */}
-      <div className="h-[72px]"></div>
+      <div className="h-[56px] sm:h-[64px]"></div>
 
-      {/* Hero Section */}
-      <section id="home" className="hero-gradient py-12 sm:py-16 md:py-24 relative min-h-[calc(100vh-72px)]">
+      {/* Hero Section - С ЛОГОТИПОМ ВМЕСТО СИНЕГО БЛОКА */}
+      <section id="home" className="hero-gradient py-12 sm:py-16 md:py-24 relative min-h-[calc(100vh-56px)] sm:min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 min-h-[calc(100vh-120px)] md:min-h-0">
             <div className="text-white animate-slideUp">
@@ -429,10 +430,17 @@ export default function LaundryZone() {
                 </a>
               </div>
             </div>
+            
+            {/* ПРАВАЯ СТОРОНА - ЛОГОТИП ВМЕСТО СИНЕГО БЛОКА */}
             <div className="animate-scaleIn delay-200 hidden md:block">
               <div className="glass-effect rounded-3xl p-6 sm:p-8 shadow-2xl">
-                <div className="w-full aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-xl flex items-center justify-center p-4">
-                  <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center">Laundryzone</span>
+                {/* Большое изображение логотипа */}
+                <div className="w-full aspect-square bg-white rounded-2xl shadow-xl flex items-center justify-center p-6 overflow-hidden">
+                  <img 
+                    src="/images/logo.jpg" 
+                    alt="Laundryzone Logo" 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="mt-4 sm:mt-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 sm:p-6 rounded-2xl">
                   <div className="flex items-center gap-3 sm:gap-4">
@@ -451,7 +459,7 @@ export default function LaundryZone() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section - РАЗДЕЛЕННЫЕ БЛОКИ СТИРКА И СУШКА */}
       <section id="about" className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center animate-slideUp">
@@ -464,26 +472,33 @@ export default function LaundryZone() {
             <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-8 sm:mb-10 md:mb-12 px-2">
               Laundry Zone в Алматы - профессиональные машинки 20-30кг. Стирка и сушка всего за 1 час
             </p>
-            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {[
                 { number: '4', label: 'филиала в Алматы', delay: 'delay-100' },
-                { number: '', label: '', delay: 'delay-200', isPrice: true },
-                { number: '10K+', label: 'Довольных клиентов', delay: 'delay-300' }
+                { 
+                  number: '', 
+                  label: 'Стирка', 
+                  price: 'от 3000₸',
+                  delay: 'delay-200', 
+                  gradient: 'from-blue-600 to-blue-700'
+                },
+                { 
+                  number: '', 
+                  label: 'Сушка', 
+                  price: 'от 3000₸',
+                  delay: 'delay-300', 
+                  gradient: 'from-orange-600 to-orange-700'
+                },
+                { number: '10K+', label: 'Довольных клиентов', delay: 'delay-400' }
               ].map((stat, idx) => (
                 <div key={idx} className={`card-hover bg-gradient-to-br from-blue-50 to-orange-50 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg animate-slideUp ${stat.delay} flex flex-col items-center justify-center`}>
-                  {stat.isPrice ? (
+                  {stat.price ? (
                     <div className="text-center">
-                      <div className="text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-1 sm:mb-2">
-                        Стирка
-                      </div>
-                      <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-700 mb-2 sm:mb-4">
-                        от 3000₸
-                      </div>
-                      <div className="text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-1 sm:mb-2">
-                        Сушка
+                      <div className={`text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2 sm:mb-3`}>
+                        {stat.label}
                       </div>
                       <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-700">
-                        от 3000₸
+                        {stat.price}
                       </div>
                     </div>
                   ) : (
@@ -529,8 +544,8 @@ export default function LaundryZone() {
           features: [
             { text: 'повседневная одежда', icon: RiTShirtLine },
             { text: 'одеяла', icon: FaBed },
-            { text: 'пледы', icon: FaCouch },              // ← ИЗМЕНЕНО
-            { text: 'подушки', icon: IoBedOutline },        // ← ИЗМЕНЕНО
+            { text: 'пледы', icon: FaCouch },
+            { text: 'подушки', icon: IoBedOutline },
             { text: 'куртки', icon: GiClothes },
             { text: 'кроссовки', icon: FaShoePrints },
             { text: 'шторы', icon: AiOutlineHome },
@@ -739,7 +754,7 @@ export default function LaundryZone() {
                         href="mailto:info@laundryzone.kz" 
                         className="text-sm sm:text-base text-blue-100 hover:text-white transition-colors break-all"
                       >
-                        info@laundryzone.kz
+                        laundryzonekazakhstan@gmail.com
                       </a>
                     </div>
                   </div>
@@ -834,10 +849,11 @@ export default function LaundryZone() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg sm:rounded-xl flex items-center justify-center">
-                  <div className="w-5 h-4 sm:w-6 sm:h-5 border-3 border-white rounded-md"></div>
-                </div>
-                <div className="text-xl sm:text-2xl font-bold">Laundryzone</div>
+                <img 
+                  src="/images/logo.jpg" 
+                  alt="Laundryzone Logo" 
+                  className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                />
               </div>
               <p className="text-sm sm:text-base text-gray-400">
                 Первая в Казахстане прачечная самообслуживания
