@@ -242,23 +242,55 @@ export default function Equipment() {
         </div>
       </section>
 
-      {/* Equipment Grid */}
+  {/* Equipment Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
-            {/* Placeholder cards for equipment images */}
+            {/* Equipment cards with real images */}
             {[
-              { title: 'Стиральная машина 1', capacity: '30 кг' },
-              { title: 'Стиральная машина 2', capacity: '20 кг' },
-              { title: 'Сушильная машина 1', capacity: '25 кг' },
-              { title: 'Сушильная машина 2', capacity: '25 кг' }
+              { 
+                title: 'Стиральная машина 1', 
+                capacity: '30 кг',
+                image: '/images/washer1.png',
+                alt: 'Стиральная машина 30 кг'
+              },
+              { 
+                title: 'Стиральная машина 2', 
+                capacity: '20 кг',
+                image: '/images/washer2.png',
+                alt: 'Стиральная машина 20 кг'
+              },
+              { 
+                title: 'Сушильная машина 1', 
+                capacity: '25 кг',
+                image: '/images/driver1.jpeg',
+                alt: 'Сушильная машина 25 кг'
+              },
+              { 
+                title: 'Сушильная машина 2', 
+                capacity: '25 кг',
+                image: '/images/driver2.jpeg',
+                alt: 'Сушильная машина 25 кг'
+              }
             ].map((item, idx) => (
               <div key={idx} className={`card-hover bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-${idx}00`}>
-                <div className="equipment-placeholder aspect-square flex items-center justify-center p-6 sm:p-8">
-                  <div className="text-center">
-                    <Settings className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 text-gray-400" />
-                    <p className="text-sm sm:text-base text-gray-500 font-semibold">Фото оборудования</p>
-                    <p className="text-xs sm:text-sm text-gray-400 mt-2">Администратор добавит изображение</p>
+                <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                  <img 
+                    src={item.image}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback placeholder */}
+                  <div className="hidden absolute inset-0 flex items-center justify-center p-6 sm:p-8">
+                    <div className="text-center">
+                      <Settings className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 text-gray-400" />
+                      <p className="text-sm sm:text-base text-gray-500 font-semibold">Фото оборудования</p>
+                      <p className="text-xs sm:text-sm text-gray-400 mt-2">Загрузите {item.image}</p>
+                    </div>
                   </div>
                 </div>
                 <div className="p-4 sm:p-6">
@@ -271,62 +303,104 @@ export default function Equipment() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-8 sm:mt-12 px-4">
-            <div className="inline-block bg-blue-100 border-2 border-blue-400 rounded-xl sm:rounded-2xl px-4 py-3 sm:px-6 sm:py-4 max-w-2xl">
-              <p className="text-blue-900 font-semibold text-sm sm:text-base">
-                📸 Администратор: Добавьте реальные фотографии оборудования, заменив placeholder'ы в коде
-              </p>
-              <p className="text-blue-800 text-xs sm:text-sm mt-2">
-                Рекомендуемый формат: JPG или PNG, размер: 800x800px (квадрат)
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16 animate-slideUp">
-              <h2 className="section-title text-gray-900 mb-3 sm:mb-4 px-4">Преимущества нашего оборудования</h2>
-              <p className="text-lg sm:text-xl text-gray-600 px-4">Технологии мирового класса</p>
+   {/* Features Section */}
+<section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-orange-50 relative overflow-hidden">
+  {/* Decorative background elements */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-30">
+    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+    <div className="absolute top-40 right-10 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+    <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+  </div>
+
+  <div className="container mx-auto px-4 sm:px-6 relative z-10">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-12 sm:mb-16 animate-slideUp">
+        <div className="inline-block mb-4">
+        </div>
+        <h2 className="section-title text-gray-900 mb-3 sm:mb-4 px-4">
+          Преимущества нашего оборудования
+        </h2>
+        <p className="text-lg sm:text-xl text-gray-600 px-4">
+          Технологии мирового класса для вашего комфорта
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        {[
+          {
+            icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12" />,
+            title: 'Энергоэффективность',
+            description: 'Современные машины потребляют минимум электроэнергии и воды, экономя ваши средства',
+            color: 'from-yellow-400 to-orange-500',
+            bgColor: 'from-yellow-50 to-orange-50',
+            shadowColor: 'shadow-yellow-200/50'
+          },
+          {
+            icon: <Shield className="w-10 h-10 sm:w-12 sm:h-12" />,
+            title: 'Безопасность',
+            description: 'Все оборудование сертифицировано и проходит регулярное техническое обслуживание',
+            color: 'from-blue-500 to-indigo-600',
+            bgColor: 'from-blue-50 to-indigo-50',
+            shadowColor: 'shadow-blue-200/50'
+          },
+          {
+            icon: <ThermometerSun className="w-10 h-10 sm:w-12 sm:h-12" />,
+            title: 'Разные режимы',
+            description: 'Множество программ стирки и сушки для разных типов тканей и загрязнений',
+            color: 'from-red-500 to-pink-600',
+            bgColor: 'from-red-50 to-pink-50',
+            shadowColor: 'shadow-pink-200/50'
+          }
+        ].map((feature, idx) => (
+          <div 
+            key={idx} 
+            className={`group card-hover bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl ${feature.shadowColor} transition-all duration-300 animate-slideUp delay-${idx + 1}00 border border-gray-100 hover:border-transparent relative overflow-hidden`}
+          >
+            {/* Subtle background gradient on hover */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
+            
+            <div className="relative z-10">
+              <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                {feature.icon}
+              </div>
+              
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${feature.color} transition-all duration-300">
+                {feature.title}
+              </h3>
+              
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                {
-                  icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12" />,
-                  title: 'Энергоэффективность',
-                  description: 'Современные машины потребляют минимум электроэнергии и воды, экономя ваши средства',
-                  color: 'from-yellow-500 to-orange-500'
-                },
-                {
-                  icon: <Shield className="w-10 h-10 sm:w-12 sm:h-12" />,
-                  title: 'Безопасность',
-                  description: 'Все оборудование сертифицировано и проходит регулярное техническое обслуживание',
-                  color: 'from-blue-500 to-blue-600'
-                },
-                {
-                  icon: <ThermometerSun className="w-10 h-10 sm:w-12 sm:h-12" />,
-                  title: 'Разные режимы',
-                  description: 'Множество программ стирки и сушки для разных типов тканей и загрязнений',
-                  color: 'from-red-500 to-pink-500'
-                }
-              ].map((feature, idx) => (
-                <div key={idx} className={`card-hover bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl animate-slideUp delay-${idx + 1}00`}>
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${feature.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 shadow-lg`}>
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+            {/* Decorative corner element */}
+            <div className={`absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br ${feature.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style jsx>{`
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+`}</style>
 
       {/* Technical Specs */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -430,16 +504,16 @@ export default function Equipment() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 sm:py-12">
+    {/* Footer */}
+      <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <img 
-                  src="/images/logo.jpg" 
+                  src="/images/logo.png" 
                   alt="Laundryzone Logo" 
-                  className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                  className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-60 w-auto object-contain"
                 />
               </div>
               <p className="text-sm sm:text-base text-gray-400">
@@ -448,23 +522,26 @@ export default function Equipment() {
             </div>
             <div>
               <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Навигация</h4>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-sm sm:text-base text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
-                <li><a href="/locations" className="text-sm sm:text-base text-gray-400 hover:text-orange-400 transition-colors">Филиалы и Адреса</a></li>
-                <li><a href="/equipment" className="text-sm sm:text-base text-orange-400 font-semibold">Оборудование</a></li>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+                <li><a href="/" className="text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
+                <li><a href="#about" className="text-gray-400 hover:text-orange-400 transition-colors">О нас</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-orange-400 transition-colors">Услуги</a></li>
+                <li><a href="#pricing" className="text-gray-400 hover:text-orange-400 transition-colors">Цены</a></li>
+                <li><a href="/locations" className="text-gray-400 hover:text-orange-400 transition-colors">Филиалы</a></li>
+                <li><a href="/equipment" className="text-gray-400 hover:text-orange-400 transition-colors">Оборудование</a></li>
+                <li><a href="#faq" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Контакты</h4>
-              <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-                <li>📍 Алматы, Казахстан</li>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-400">
                 <li>📞 +7 (707) 909 25 28</li>
-                <li>✉️ laundryzonekazakhstan@gmail.com</li>
+                <li className="break-all">✉️ laundryzonekazakhstan@gmail.com</li>
                 <li>⏰ 08:00-00:00 Открыто</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-sm sm:text-base text-gray-400">
+          <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-gray-400">
             <p>&copy; 2019-2026 Laundryzone. Все права защищены.</p>
           </div>
         </div>

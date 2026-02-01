@@ -357,7 +357,7 @@ export default function Locations() {
                   </div>
                 </div>
                 <a 
-                  href="https://2gis.kz/almaty/geo/70000001110333840" 
+                  href="https://2gis.kz/almaty/geo/70000001103338840" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="mt-4 sm:mt-6 w-full bg-gradient-to-r from-orange-600 to-orange-700 text-white py-2.5 sm:py-3 rounded-xl font-bold hover:shadow-lg transition-all block text-center text-sm sm:text-base"
@@ -419,7 +419,7 @@ export default function Locations() {
             <div className="card-hover bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl animate-slideUp delay-300">
               <div className="relative h-48 sm:h-64">
                 <img 
-                  src="/images/philial2.jpg" 
+                  src="/images/philial3.jpg" 
                   alt="Филиал №4" 
                   className="w-full h-full object-cover"
                 />
@@ -480,15 +480,6 @@ export default function Locations() {
                 {/* Address Info */}
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Адрес</h3>
-                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        г. Алматы, Казахстан<br />
-                      </p>
-                    </div>
                   </div>
 
                   <div className="flex items-start gap-3 sm:gap-4">
@@ -496,12 +487,12 @@ export default function Locations() {
                       <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Часы работы</h3>
-                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        Понедельник - Воскресенье<br />
-                        08:00 - 24:00<br />
-                        <span className="text-green-600 font-semibold">Работаем каждый день!</span>
-                      </p>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Часы работы</h3>
+                      <div className="text-sm sm:text-base text-gray-700 leading-relaxed space-y-1">
+                        <p>Понедельник - Воскресенье</p>
+                        <p className="font-semibold">08:00 - 24:00</p>
+                        <p className="text-green-600 font-semibold mt-2">Работаем каждый день!</p>
+                      </div>
                     </div>
                   </div>
 
@@ -510,12 +501,12 @@ export default function Locations() {
                       <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Контакты</h3>
-                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        Телефон: +7 (707) 909 25 28<br />
-                        Email: laundryzonekazakhstan@gmail.com<br />
-                        WhatsApp: +7 (707) 909 25 28
-                      </p>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Контакты</h3>
+                      <div className="text-sm sm:text-base text-gray-700 leading-relaxed space-y-1">
+                        <p>Телефон: +7 (707) 909 25 28</p>
+                        <p>Email: laundryzonekazakhstan@gmail.com</p>
+                        <p>WhatsApp: +7 (707) 909 25 28</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -547,16 +538,16 @@ export default function Locations() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 sm:py-12">
+    {/* Footer */}
+      <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <img 
-                  src="/images/logo.jpg" 
+                  src="/images/logo.png" 
                   alt="Laundryzone Logo" 
-                  className="h-8 sm:h-10 w-auto object-contain"
+                  className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-60 w-auto object-contain"
                 />
               </div>
               <p className="text-sm sm:text-base text-gray-400">
@@ -565,23 +556,26 @@ export default function Locations() {
             </div>
             <div>
               <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Навигация</h4>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-sm sm:text-base text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
-                <li><a href="/locations" className="text-sm sm:text-base text-orange-400 font-semibold">Филиалы и Адреса</a></li>
-                <li><a href="/equipment" className="text-sm sm:text-base text-gray-400 hover:text-orange-400 transition-colors">Оборудование</a></li>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+                <li><a href="/" className="text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
+                <li><a href="#about" className="text-gray-400 hover:text-orange-400 transition-colors">О нас</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-orange-400 transition-colors">Услуги</a></li>
+                <li><a href="#pricing" className="text-gray-400 hover:text-orange-400 transition-colors">Цены</a></li>
+                <li><a href="/locations" className="text-gray-400 hover:text-orange-400 transition-colors">Филиалы</a></li>
+                <li><a href="/equipment" className="text-gray-400 hover:text-orange-400 transition-colors">Оборудование</a></li>
+                <li><a href="#faq" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Контакты</h4>
-              <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-                <li>📍 Алматы, Казахстан</li>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-400">
                 <li>📞 +7 (707) 909 25 28</li>
-                <li>✉️ laundryzonekazakhstan@gmail.com</li>
+                <li className="break-all">✉️ laundryzonekazakhstan@gmail.com</li>
                 <li>⏰ 08:00-00:00 Открыто</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-sm sm:text-base text-gray-400">
+          <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-gray-400">
             <p>&copy; 2019-2026 Laundryzone. Все права защищены.</p>
           </div>
         </div>
