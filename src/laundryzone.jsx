@@ -437,7 +437,7 @@ export default function LaundryZone() {
                 {/* Большое изображение логотипа */}
                 <div className="w-full aspect-square bg-white rounded-2xl shadow-xl flex items-center justify-center p-6 overflow-hidden">
                   <img 
-                    src="/images/logo.jpg" 
+                    src="/images/logo.png" 
                     alt="Laundryzone Logo" 
                     className="w-full h-full object-contain"
                   />
@@ -836,25 +836,25 @@ export default function LaundryZone() {
         </div>
       </section>
 
-   {/* Footer - ИДЕАЛЬНЫЙ РАЗМЕР ЛОГОТИПА */}
+   {/* Footer - ИСПРАВЛЕННЫЕ ОТСТУПЫ И ИНТЕРВАЛЫ */}
       <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 mb-6 sm:mb-8">
             <div>
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <img 
-                  src="/images/logo.png" 
-                  alt="Laundryzone Logo" 
-                  className="h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 2xl:h-80 w-auto object-contain"
-                />
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+    <img 
+  src="/images/logo.png" 
+  alt="Laundryzone Logo" 
+  className="h-24 sm:h-32 md:h-40 lg:h-44 xl:h-52 w-auto object-contain"
+/>
               </div>
               <p className="text-sm sm:text-base text-gray-400">
                 Первая в Казахстане прачечная самообслуживания
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Навигация</h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+              <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Навигация</h4>
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
                 <li><a href="/" className="text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
                 <li><a href="#about" className="text-gray-400 hover:text-orange-400 transition-colors">О нас</a></li>
                 <li><a href="#services" className="text-gray-400 hover:text-orange-400 transition-colors">Услуги</a></li>
@@ -865,8 +865,8 @@ export default function LaundryZone() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Контакты</h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-400">
+              <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Контакты</h4>
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-400">
                 <li>📞 +7 (707) 909 25 28</li>
                 <li className="break-all">✉️ laundryzonekazakhstan@gmail.com</li>
                 <li>⏰ 08:00-00:00 Открыто</li>

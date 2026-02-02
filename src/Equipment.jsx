@@ -166,7 +166,7 @@ export default function Equipment() {
         <div className="p-6">
           <div className="flex justify-between items-center mb-8">
             <img 
-              src="/images/logo.jpg" 
+              src="/images/logo.png" 
               alt="Laundryzone Logo" 
               className="h-25 sm:h-40 w-auto object-contain"
             />
@@ -209,7 +209,7 @@ export default function Equipment() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-3">
               <img 
-                src="/images/logo.jpg" 
+                src="/images/logo.png" 
                 alt="Laundryzone Logo" 
                 className="h-12 sm:h-16 md:h-20 w-auto object-contain"
               />
@@ -233,17 +233,68 @@ export default function Equipment() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-green-600 via-green-700 to-green-900 text-white">
+    {/* Hero Section - НОВЫЙ ДИЗАЙН С ТЕКСТОМ СЛЕВА И ФОТО СПРАВА */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-green-600 via-green-700 to-green-900 text-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center animate-slideUp">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-xl">
-              <Settings className="w-8 h-8 sm:w-10 sm:h-10 rotate-slow" />
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+              
+              {/* Левая сторона - Текст */}
+              <div className="animate-slideUp space-y-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl">
+                  <Settings className="w-8 h-8 sm:w-10 sm:h-10 rotate-slow" />
+                </div>
+                
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
+                  Оборудование
+                </h1>
+                
+                <p className="text-xl sm:text-2xl text-green-100 leading-relaxed">
+                  Самое современное оборудование для профессиональной стирки
+                </p>
+
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <p className="font-bold">20-30 кг</p>
+                    <p className="text-sm text-green-100">Вместимость</p>
+                  </div>
+                  <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <p className="font-bold">A++ класс</p>
+                    <p className="text-sm text-green-100">Энергоэффективность</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Правая сторона - Фото оборудования */}
+              <div className="relative animate-slideUp">
+                {/* Декоративные элементы */}
+                <div className="absolute -top-10 -right-10 w-64 h-50 bg-white/10 rounded-full blur-3xl"></div>
+                <div className="absolute -bottom-10 -left-10 w-64 h-50 bg-green-300/20 rounded-full blur-3xl"></div>
+                
+                {/* Фото */}
+                <div className="relative z-10">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img 
+                      src="/images/equipment.jpeg"
+                      alt="Профессиональное оборудование Laundryzone"
+                      className="w-full h-auto object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    {/* Плейсхолдер */}
+                    <div className="hidden w-full aspect-[4/3] bg-white/10 backdrop-blur-sm flex-col items-center justify-center p-8">
+                      <Settings className="w-24 h-24 text-white/50 mb-4" />
+                    </div>
+                    
+                    {/* Градиент исчезновения */}
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-green-900/40 pointer-events-none"></div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <h1 className="section-title text-white mb-4 sm:mb-6 px-4">Оборудование</h1>
-            <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8 px-4">
-              Самое современное оборудование для профессиональной стирки
-            </p>
           </div>
         </div>
       </section>
@@ -495,25 +546,25 @@ export default function Equipment() {
         </div>
       </section>
 
-      {/* Footer */}
+   {/* Footer - ИСПРАВЛЕННЫЕ ОТСТУПЫ И ИНТЕРВАЛЫ */}
       <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 mb-6 sm:mb-8">
             <div>
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <img 
-                  src="/images/logo.png" 
-                  alt="Laundryzone Logo" 
-                  className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-60 w-auto object-contain"
-                />
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+         <img 
+  src="/images/logo.png" 
+  alt="Laundryzone Logo" 
+  className="h-24 sm:h-32 md:h-40 lg:h-44 xl:h-52 w-auto object-contain"
+/>
               </div>
               <p className="text-sm sm:text-base text-gray-400">
                 Первая в Казахстане прачечная самообслуживания
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Навигация</h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+              <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Навигация</h4>
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
                 <li><a href="/" className="text-gray-400 hover:text-orange-400 transition-colors">Главная</a></li>
                 <li><a href="#about" className="text-gray-400 hover:text-orange-400 transition-colors">О нас</a></li>
                 <li><a href="#services" className="text-gray-400 hover:text-orange-400 transition-colors">Услуги</a></li>
@@ -524,8 +575,8 @@ export default function Equipment() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Контакты</h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-400">
+              <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Контакты</h4>
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-400">
                 <li>📞 +7 (707) 909 25 28</li>
                 <li className="break-all">✉️ laundryzonekazakhstan@gmail.com</li>
                 <li>⏰ 08:00-00:00 Открыто</li>
